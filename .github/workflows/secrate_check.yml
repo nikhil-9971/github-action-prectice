@@ -1,0 +1,21 @@
+name: Secrate Check
+
+on:
+    push:
+        branches: [main]
+
+jobs:
+    secrate_check:
+         runs-on: ubuntu-latest
+         steps:
+            - name: Print the sceate
+              run: |
+                if [ -n "${{secrets.MY_SECRET_MESSAGE}}"]
+                then
+                    echo "The secret is set: true"
+                else
+                    echo "The secret is not set"
+                fi
+
+            - name: Try printing secret
+              run: echo "${{ secrets.MY_SECRET_MESSAGE }}"
