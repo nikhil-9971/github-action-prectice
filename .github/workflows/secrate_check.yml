@@ -7,6 +7,9 @@ on:
 jobs:
     secrate_check:
          runs-on: ubuntu-latest
+         env:
+            DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+            DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
          steps:
             - name: Print the sceate
               run: |
@@ -19,3 +22,12 @@ jobs:
 
             - name: Try printing secret
               run: echo "${{ secrets.MY_SECRET_MESSAGE }}"
+
+            
+            - name: Use Secrets as Environment Variables
+              run: |
+               echo "Docker username is $DOCKER_USERNAME"
+
+            - name: Docker Login using Secrets
+              run: |
+               echo "$DOCKER_TOKEN" | docker login -u "$DOCKER_USERNAME" --password-stdin
