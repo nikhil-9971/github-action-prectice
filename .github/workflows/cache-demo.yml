@@ -21,6 +21,6 @@ jobs:
                 path: ~/.cache/pip
                 key: pip-cache-${{ hashFiles('requirements.txt') }}
 
-            - name: Install Dependencies
+            - name: Install Dependencies for require
               run: |
                pip install -r requirements.txt    
