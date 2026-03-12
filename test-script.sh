@@ -3,7 +3,7 @@
 echo "Running CI shell Test"
 
 a=5
-b=10
+b=5
 
 if [ $a -eq $b ]
 then
