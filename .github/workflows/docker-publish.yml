@@ -28,7 +28,7 @@ jobs:
             - name: Set short SHA using slice
               run: echo "SHORT_SHA=${GITHUB_SHA::7}" >> $GITHUB_ENV
          
-            - name: Build and Push Docker image
+            - name: Build and Push Docker image.
               uses: docker/build-push-action@v5
               with:
                 context: .
