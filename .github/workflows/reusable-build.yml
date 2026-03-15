@@ -32,7 +32,7 @@ jobs:
 
             - name: Verify The Docker Token
               run: |
-                if [ -n "${{ secrets.docker_token }}"]
+                if [ -n "${{ secrets.docker_token }}" ]
                 then
                     echo "Docker token is set : true"
                 else
