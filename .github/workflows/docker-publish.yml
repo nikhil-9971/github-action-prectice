@@ -1,0 +1,20 @@
+name: Build Docker Image
+
+on:
+    push:
+        branches: [main]
+
+jobs:
+    build_image:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
+              
+            - name: Build and push Docker image
+              uses: docker/build-push-action@v5
+              with:
+               context: .
+               push: true
+               tags: my_webapp:latest
+         
