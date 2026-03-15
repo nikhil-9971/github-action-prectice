@@ -38,7 +38,7 @@ jobs:
                     ${{secrets.DOCKER_USERNAME}}/my_webapp:sha-${{ env.SHORT_SHA }}
             
             # Add a condition so the push step only runs on the main branch — not on feature branches or PRs.
-            - name: Build image for other branch but not pushed
+            - name: Build image for other branch but not pushed.
               if: github.ref_name != 'main'
               uses: docker/build-push-action@v5
               with:
