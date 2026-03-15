@@ -21,11 +21,13 @@ on:
                 required: true
         outputs:   # Map the workflow outputs to job outputs
             build_version:
-                value: ${{ jobs.build.outputs.build_version }}
+                value: ${{ jobs.reusable_work_flow.outputs.build_version }}
 
 jobs:
     reusable_work_flow:
         runs-on: ubuntu-latest
+        outputs: # Map the job outputs to step outputs
+            build_version: ${{ steps.set-version.outputs.build_version }}
         steps:
             - name: Checkout Code
               uses: actions/checkout@v4
