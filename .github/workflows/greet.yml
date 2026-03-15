@@ -21,4 +21,4 @@ jobs:
 
       - name: Print action output
         run: |
-        echo "Greeting completed: ${{ steps.greet.outputs.greeted }}"
+         echo "Greeting completed: ${{ steps.greet.outputs.greeted }}"
