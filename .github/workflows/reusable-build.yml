@@ -1,0 +1,40 @@
+name: Reusable Work Flow
+
+on:
+    workflow_call:
+        
+
+        inputs:
+            app_name:
+                description: "My_Web_App"
+                required: true
+                type: string
+            
+            environment:
+                description: "Development environment"
+                required: true
+                type: string
+                default: staging
+            
+        secrets:
+            docker_token:
+                required: true
+
+jobs:
+    reusable_work_flow:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
+
+            - name: Building for environment
+              run: echo "Building ${{ inputs.app_name }} for ${{ inputs.environment }}"
+
+            - name: Verify The Docker Token
+              run: |
+                if [ -n "${{ secrets.docker_token }}"]
+                then
+                    echo "Docker token is set : true"
+                else
+                    echo "Docker token is set : false"
+                fi
