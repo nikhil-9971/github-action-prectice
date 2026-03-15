@@ -25,7 +25,7 @@ jobs:
                username: ${{ secrets.DOCKER_USERNAME}}
                password: ${{ secrets.DOCKER_TOKEN }}
 
-            - name: Set short SHA using slice
+            - name: Set short SHA using slice.
               run: echo "SHORT_SHA=${GITHUB_SHA::7}" >> $GITHUB_ENV
          
             - name: Build and Push Docker image
