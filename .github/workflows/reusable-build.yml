@@ -11,7 +11,7 @@ on:
                 type: string
             
             environment:
-                description: "Development environment"
+                description: "Production environment"
                 required: true
                 type: string
                 default: staging
