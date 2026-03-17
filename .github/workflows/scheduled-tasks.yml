@@ -1,0 +1,38 @@
+name: Scheduled Workflows
+
+on:
+    schedule:
+        - cron: "30 2 * * 1" # every Monday at 2:30 AM UTC
+        - cron: "0 */6 * * *" # every 6 hours
+    workflow_dispatch:
+
+
+jobs:
+    schedule_trigger:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
+            
+            - name: print which schedule trigger
+              run: |
+                if [[ -z "${{ github.event.schedule }}" ]]
+                then
+                    echo "Worflow trigger Manually"
+                else
+                    echo "workflow trigger by cron schedule: ${{ github.event.schedule }}"
+                fi
+            - name: Health Check
+              run: |
+                URL="https://relconecz1.netlify.app/"
+
+                echo "Checking health of $URL"
+
+                STATUS=$(curl -o /dev/null -s -w "%{http_code}" $URL)
+
+                if [ "$STATUS" -ne 200 ]
+                then
+                    echo "Health check failed"
+                else
+                    echo "Health Check Passed"
+                fi
